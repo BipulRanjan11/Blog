@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>This is index.html</h1>
 
+<div class="container">
+    <h2>All Articles</h2>
+    <div class='row'>
+        {% for i in title %}
+        <div class="card col-3 m-3" style="width: 18rem;">
+            <img src="{{i.img.url}}" class="card-img-top" alt="..." >
+            <div class="card-body">
+                <h5 class="card-title">{{i.title | truncatewords:7}}</h5>
+                <p class="card-text">{{i.content | truncatewords:30}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    
+</div>
 {% endblock content %}
