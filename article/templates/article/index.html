@@ -6,12 +6,14 @@
     <h2>All Articles</h2>
     <div class='row g-lg-'>
         {% for i in title %}
-        <div class="card col-3 m-3" style="width: 18rem;">
-            <img  src="{{i.img.url}}" class="card-img-top img-fluid" alt="..." >
-            <div class="card-body">
-                <h5 class="card-title">{{i.title | truncatewords:7}}</h5>
-                <p class="card-text">{{i.content | truncatewords:30}}</p>
-                <a href="{% url "article:single_article" i.id %}" class="btn btn-primary">Read More</a>
+        <div class='col-md-4 col-lg-3 col-sm-6'>
+            <div class="card  m-4" style="width: 18rem;">
+                <img  src="{{i.img.url}}" class="card-img-top img-fluid" alt="..." >
+                <div class="card-body">
+                    <h5 class="card-title">{{i.title | truncatewords:7}}</h5>
+                    <p class="card-text">{{i.content | truncatewords:30}}</p>
+                    <a href="{% url "article:single_article" i.id %}" class="btn btn-primary">Read More</a>
+                </div>
             </div>
         </div>
         <br>

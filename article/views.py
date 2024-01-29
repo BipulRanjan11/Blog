@@ -19,3 +19,20 @@ def categories(request):
     return {
         'categories':categories
     }
+
+def categorised_article(request,pk):
+    if pk == 0:
+        articles=Article.objects.all()
+        context={
+        'articles':articles,
+        'category':'all',
+        }
+    else:
+        category=Category.objects.get(pk=pk)
+        articles=Article.objects.filter(category=category).all()
+
+        context={
+            'articles':articles,
+            'category':category,
+        }
+    return render(request,'article/categoriesd_article.html',context)
