@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from . models import *
+from .forms import ArticleForm
 # Create your views here.
 
 def index(request):
@@ -36,3 +37,19 @@ def categorised_article(request,pk):
             'category':category,
         }
     return render(request,'article/categoriesd_article.html',context)
+
+def create_article(request):
+
+    form = ArticleForm()
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES) 
+        if form.is_valid():
+            form.save()
+            return redirect('article:index')
+
+    context = {
+        "form" : form,
+    }
+
+    return render(request, 'article/article_form.html', context) 
