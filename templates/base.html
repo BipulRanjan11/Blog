@@ -26,7 +26,7 @@
                 <a class="nav-link active" aria-current="page" href="{% url "article:index" %}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url "article:create_article" %}">Post</a>
+                <a class="nav-link" href="{% url "article:post_article" %}">Post</a>
               </li>
 
 
@@ -47,6 +47,12 @@
 
 
               {% if user.is_authenticated %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "users:profile" %}">Profile</a>
+              </li>
+
+
               <li class="nav-item">
                 <form class='nav-link' method="POST" action="{% url 'users:logout' %}">
                   {% csrf_token %}
