@@ -131,5 +131,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL='article:index'
 
-LOGIN_URL='users:login'
+LOGIN_URL='login'
 
+
+# to connet email to your project
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ranjanbipul257@gmail.com'  # Enter your Gmail email address
+EMAIL_HOST_PASSWORD = 'gcjprxargvubyfsi'     # Enter your Gmail password or an App Password if 2-step verification is enabled

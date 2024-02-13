@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="row my-4 container">
+   <div class="container">
+      <h1 class=" text-dark fw-bold my-2">Username: {{author.username}}</h1> 
+      <p>Article Counts:{{article_counts}}</p>
+      {%if author.profile %}
+      <div class="shadow rounded p-3 my-3" style="width: 30%;">
+         <img class="mb-4 rounded-circle" style="height: 250px; width: 80%;" src="{{author.profile.image.url}}" alt="">
+         <h3 class="text-dark">{{author.profile.first_name}} {{author.profile.last_name}}</h3>
+         <p> 📞 {{author.profile.contact_number}}</p>
+         <p>📧 {{author.email}}</p>
+         <p>{{author.profile.bio}}</p>
+         {% comment %} <a class="btn btn-success" href="{%url 'users:edit_profile'%}">Edit</a> {% endcomment %}
+      </div>
+      {% else %} 
+         ------
+      {% endif %} 
+   </div>
+   <div id="all_posts" class="col-lg-8">  
+      <h3>All Posts</h3>
+      {% include "users/all_posts.html" with article_list=articles exclude_div=True %}   
+  </div>  
+</div>
+{% endblock content %}

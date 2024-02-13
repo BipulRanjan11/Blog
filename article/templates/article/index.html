@@ -5,7 +5,7 @@
 <div class="container">
     <h2>All Articles</h2>
     <div class='row g-lg-'>
-        {% for i in title %}
+        {% for i in page_obj %}
         <div class='col-md-4 col-lg-3 col-sm-6'>
             <div class="card  m-4" style="width: 18rem;">
                 <img  src="{{i.img.url}}" class="card-img-top img-fluid" alt="..." >
@@ -20,5 +20,22 @@
         {% endfor %}
     </div>
     
+    <div class="pagination my-4 justify-content-center">
+        {% if page_obj.has_previous %}
+            <a class="mx-2 text-decoration-none fw-bolder btn btn-outline-success " href="?page=1">First</a>
+            <a class="mx-2 text-decoration-none fw-bolder btn btn-outline-success " href="?page={{page_obj.previous_page_number}}">Previous</a>
+
+        {% endif %}
+        
+            <span class="mx-2 my-2 tex-dark h5">
+                {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+            </span>
+        {% if page_obj.has_next %}
+            <a class="mx-2 text-decoration-none fw-bolder btn btn-outline-success " href="?page={{page_obj.next_page_number}}">Next</a>
+            <a class="mx-2 text-decoration-none fw-bolder btn btn-outline-success " href="?page={{page_obj.paginator.num_pages}}">Last</a>
+
+        {% endif %}
+    </div>
+
 </div>
 {% endblock content %}

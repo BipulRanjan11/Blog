@@ -3,18 +3,24 @@
 
 {% block content %}
 
-<div class="container"> 
-
-    <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">
+<div class="container" >
+    <h3 class="mx-1 my-3 fw-bold text-success">Post a article</h3> 
+    <form style="width:60%;" action="" method="POST" enctype = "multipart/form-data">
         {% csrf_token %}
-
-            {{form.as_p }}
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {% for field in form %}
+            <div class="">
+                <div class="form-label mt-2 mx-1 fw-bold text-dark "> 
+                    {{field.label}}
+                </div> 
+                <div class="my-2">  
+                    {{field}} 
+                </div>   
+            </div>    
+        {% endfor %}   
+        <button type="submit" class='btn btn-success mx-1 my-3 rounded-0'>Submit</button>
     </form>
-
-
 </div>
+
 
 
 {% endblock content %}

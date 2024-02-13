@@ -2,9 +2,29 @@
 
 {% block content %}
 
+<div class="row my-4 container">
+   <div class="container">
+      <h1 class=" text-dark fw-bold my-2">Username: {{user.username}}</h1> 
+      {%if user.profile %}
+      <div class="shadow rounded p-3 my-3" style="width: 30%;">
+         <img class="mb-4 rounded-circle" style="height: 250px; width: 80%;" src="{{user.profile.image.url}}" alt="">
+         <h3 class="text-dark">{{user.profile.first_name}} {{user.profile.last_name}}</h3>
+         <p> 📞 {{user.profile.contact_number}}</p>
+         <p>📧 {{user.email}}</p>
+         <p>{{user.profile.bio}}</p>
+         <a class="btn btn-success" href="{%url 'edit_profile'%}">Edit</a>
+      </div>
+      {% else %} 
+         <a class="btn btn-success p-0 px-2" href="{% url "edit_profile" %}">Create</a> 
 
-<div class="container">
-   <h1 class="m-4">{{user.username}}</h1> 
+      {% endif %} 
+   </div>
+   <div id="all_posts" class="col-lg-8">
+      <h3>All Posts</h3>
+      <div>
+          {% include "users/all_posts.html" with article_list=articles exclude_div=False %} 
+      </div>
+  </div>
 </div>
 
 {% endblock content %}

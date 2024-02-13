@@ -3,8 +3,12 @@
 {% block content %}
 
 <div class="container my-4">
+    {% if query %}
+        <h4>Results for {{query}}</h4>
+    {% else %}
     <h2>Category: {{category}}</h2>
-
+    {% endif %}
+    
     <div class='container my-4'>
         {% for article in articles %}
         <a class='row text-decoration-none text-dark my-3' href='{% url "article:single_article" article.id  %}'>
